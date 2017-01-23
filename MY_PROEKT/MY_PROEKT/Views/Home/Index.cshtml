@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "";
+}
+@section featured {
+    <section class="featured">
+    <div class="content-wrapper">
+        <hgroup class="title">
+            <h1>@ViewBag.Title.</h1>
+            <h2>@ViewBag.Message</h2>
+            
+        </hgroup>
+       
+    </div>
+          
+    </section>
+}
+<p style="font: bold 22px arial;">
+    @Html.ActionLink("Узнать цены", "Index", "Usluga")
+    </p>
+    <table class="aa">
+        <tr>
+            <td><img src="~/images/1_1.jpg"></td>
+            <td><em>СТРАХОВАНИЕ ИМУЩЕСТВА</em></td>
+            <td><img src="~/images/1_3.jpg"></td>
+            <td><em>СТРАХОВАНИЕ НЕДВИЖИМОСТИ</em></td>
+        </tr>
+        <tr>
+            <td><img src="~/images/1_2.jpg"></td>
+            <td><em>МЕДИЦИНСКОЕ СТРАХОВАНИЕ</em></td>
+            <td><img src="~/images/1_4.jpg"></td>
+            <td><em>СТРАХОВАНИЕ ОТ НЕСЧАСТНЫХ СЛУЧАЕВ</em></td>
+        </tr>
+    </table>
+
+

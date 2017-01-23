@@ -1,0 +1,86 @@
+﻿@model MY_PROEKT.Models.Dogovor
+
+@{
+    ViewBag.Title = "Редактирование";
+}
+
+<h2>Редактирование договора</h2>
+<br/>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Dogovor</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nomer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nomer)
+            @Html.ValidationMessageFor(model => model.Nomer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Data)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Data)
+            @Html.ValidationMessageFor(model => model.Data)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.user1.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.UserId, ViewBag.user2 as SelectList,new { style = "height:30px;" })
+            @Html.ValidationMessageFor(model => model.user1.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.usluga1.Name)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.UslugaId, ViewBag.dog as SelectList,new { style = "height:30px;" })
+            @Html.ValidationMessageFor(model => model.usluga1.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Period)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Period)
+            @Html.ValidationMessageFor(model => model.Period)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Summa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Summa)
+            @Html.ValidationMessageFor(model => model.Summa)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AgentFio)
+        </div> 
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AgentFio)
+            @Html.ValidationMessageFor(model => model.AgentFio)
+
+        </div>
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку договоров", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

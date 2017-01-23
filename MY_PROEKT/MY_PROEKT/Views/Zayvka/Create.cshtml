@@ -1,0 +1,80 @@
+﻿@model MY_PROEKT.Models.Zayvka
+
+@{
+    ViewBag.Title = "Создание новой заявки";
+}
+
+<h2>Создание заявки</h2>
+<br />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+        <fieldset>
+        <legend>Zayvka</legend>
+
+
+                  <div class="editor-label">
+            @Html.LabelFor(model => model.Datazayvka)
+        </div>
+        <div class="editor-field">
+            <table style="border: solid 1px">
+                <tr style="background: #ffffdd"> 
+         <td style="text-align:center">
+                        @Html.DisplayFor(model => model.Datazayvka)
+                        @Html.ValidationMessageFor(model => model.Datazayvka)
+                    </td>
+                </tr>
+            </table>
+           
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.usluga.Name)
+        </div>
+        <div class="editor-field">
+           @Html.DropDownListFor(model => model.UslugaId, ViewBag.usln as SelectList,new { style = "height:30px;" })
+            @Html.ValidationMessageFor(model => model.usluga.Name)
+
+        </div>
+
+        <div class="editor-label">
+
+            @Html.LabelFor(model => model.Status)
+         </div>
+
+            <div class="editor-field">
+                <table style="border: solid 1px">
+                    <tr style="background: #ffffdd">
+                        <td style="text-align:center">
+                            @Html.DisplayFor(model => model.Status)
+                            @Html.ValidationMessageFor(model => model.Status)
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+              <div class="editor-label">
+            @Html.LabelFor(model => model.userp.UserName)
+        </div>
+        <div class="editor-field">
+             @Html.DropDownListFor(model => model.UserId, ViewBag.user2 as SelectList,new { style = "height:30px;" })
+             @Html.ValidationMessageFor(model => model.userp.UserName)
+        
+        </div>
+
+        <p>
+            <input type="submit" value="Создать" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку заявок", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

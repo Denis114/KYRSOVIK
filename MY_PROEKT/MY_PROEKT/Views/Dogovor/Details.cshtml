@@ -1,0 +1,57 @@
+﻿@model MY_PROEKT.Models.Dogovor
+
+@{
+    ViewBag.Title = "Просмотр";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Dogovor</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nomer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nomer)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Data)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.user1.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.user1.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.usluga1.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.usluga1.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Period)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Period)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Summa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Summa)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Редактирование", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

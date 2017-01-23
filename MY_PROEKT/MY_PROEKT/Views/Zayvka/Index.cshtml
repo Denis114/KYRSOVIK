@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<MY_PROEKT.Models.Zayvka>
+
+@{
+    ViewBag.Title = "Список заявок";
+}
+
+<h2 style="text-align:center; color:darkblue">Список заявок</h2>
+
+<p>
+    <div style="border:2px solid; background: ActiveBorder; color: #0094ff; padding: 10px 10px;">
+    </div>
+</p>
+<p style="font: bold 22px arial;">
+@if (Roles.GetRolesForUser().Contains("Client"))
+{ 
+    @Html.ActionLink("Подать заявку", "Create")
+}
+</p>
+<table>
+            <tr style="background: ActiveBorder; height: 50px; font: bold 14px arial; width: 1200px">
+            <th width="120px">
+                @Html.DisplayNameFor(model => model.Datazayvka)
+            </th>
+            <th width="300px">
+                @Html.DisplayNameFor(model => model.usluga.Name)
+            </th>
+            <th width="100px">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th width="100px">
+                @Html.DisplayNameFor(model => model.userp.UserName)
+            </th>
+                <th colspan="2" width="100px"></th>
+        </tr>
+   
+        @foreach (var item in Model)
+        {
+  if ((!Roles.GetRolesForUser().Contains("Client")) ||  ((item.UserId == WebSecurity.CurrentUserId) && (Roles.GetRolesForUser().Contains("Client"))))
+        {
+       <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datazayvka)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usluga.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userp.UserName)
+                </td>
+                                       <td>
+                    <div style="border: 2px solid; background: ActiveBorder; color:#808080; padding: 5px 5px;">
+@if (Roles.GetRolesForUser().Contains("Agent"))
+                        {
+                        @Html.ActionLink("Изменить", "Edit", new { id = item.ZayvkaID })
+                        }
+                    </div>
+                </td>
+                <td>
+                    <div style="border: 2px solid; background: ActiveBorder; color:#808080; padding: 5px 5px;">
+@if (Roles.GetRolesForUser().Contains("Client"))
+{
+                        @*   @Html.ActionLink("Изменить", "Details", new { id=item.ZayvkaID })  *@
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.ZayvkaID })
+}
+                    </div>
+                </td>
+            </tr>
+  }  
+        }
+</table>

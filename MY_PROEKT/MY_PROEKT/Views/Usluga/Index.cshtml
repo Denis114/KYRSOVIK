@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MY_PROEKT.Models.Usluga>
+
+@{
+    ViewBag.Title = "Список услуг";
+}
+<h2 style="text-align:center; color:darkblue">Список услуг</h2>
+<br />
+<div style="border:2px solid; background: ActiveBorder; color: #0094ff; padding: 10px 10px;">
+</div>
+
+<p style="font: bold 22px arial;">
+@if (Roles.GetRolesForUser().Contains("Admin"))
+{ 
+            @Html.ActionLink("Создать услугу", "Create")
+}
+        </p>
+    <table>
+        <tr style="background: ActiveBorder; height: 50px; font: bold 14px arial; width: 1200px; text-align: center;">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th colspan="2"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <div style="border: 10px double; background: #E8CCB5; color: #B05151; padding: 5px 5px;">
+                  @if (Roles.GetRolesForUser().Contains("Admin"))
+                         { 
+                        @Html.ActionLink("Изменить", "Edit", new { id = item.UslugaID })
+                             }
+                    </div>
+                </td>
+                <td>
+                    <div style="border: 10px; background: #E8CCB5; color: #B05151; padding: 5px 5px;">
+@if (Roles.GetRolesForUser().Contains("Admin"))
+{
+                        @*  @Html.ActionLink("Просмотр", "Details", new { id=item.UslugaID }) | *@
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.UslugaID })
+                        }
+                    </div>
+                </td>
+            </tr>
+        
+        }
+    </table>

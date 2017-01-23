@@ -1,0 +1,46 @@
+﻿@model MY_PROEKT.Models.Zayvka
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление заявок</h2>
+
+<h3>Вы действительно хотите удалить эту заявку?</h3>
+<fieldset>
+    <legend>Zayvka</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Datazayvka)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Datazayvka)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.usluga.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.usluga.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.userp.UserName)
+    </div>
+    <div class="editor-field">
+        @Html.DisplayFor(model => model.userp.UserName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Удалить" /> |
+        @Html.ActionLink("Вернуться к списку заявок", "Index")
+    </p>
+}

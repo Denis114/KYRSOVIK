@@ -1,0 +1,49 @@
+﻿@model MY_PROEKT.Models.Dogovor
+
+@{
+    ViewBag.Title = "Удаление";
+}
+<p style="font: bold 16px arial;">
+    <h2>Удаление договора</h2>
+    </p>
+    <br />
+<p style="font: bold 14px arial;">
+    <h3>Вы действительно хотите удалить эту запись?</h3>
+    </p>
+    <fieldset>
+        <legend>Dogovor</legend>
+        <table>
+            <tr>
+                <td style="font:bold 16px arial">@Html.DisplayNameFor(model => model.Nomer)</td>
+                <td style="font:bold 16px arial">@Html.DisplayFor(model => model.Nomer)</td>
+            </tr>
+            <tr>
+                <td style="font:bold 16px arial">@Html.DisplayNameFor(model => model.Data))</td>
+                <td style="font:bold 16px arial">@Html.DisplayFor(model => model.Data)</td>
+            </tr>
+            <tr>
+                <td style="font:bold 16px arial">@Html.DisplayNameFor(model => model.user1.UserName)</td>
+                <td style="font:bold 16px arial">@Html.DisplayFor(model => model.user1.UserName, new { style = "font: bold 16px arial;" })</td>
+            </tr>
+            <tr>
+                <td style="font:bold 16px arial">@Html.DisplayNameFor(model => model.usluga1.Name)</td>
+                <td style="font:bold 16px arial">@Html.DisplayFor(model => model.usluga1.Name)</td>
+            </tr>
+            <tr>
+                <td style="font:bold 16px arial">@Html.DisplayNameFor(model => model.Period)</td>
+                <td style="font:bold 16px arial">@Html.DisplayFor(model => model.Period)</td>
+            </tr>
+            <tr>
+                <td style="font:bold 16px arial">@Html.DisplayNameFor(model => model.Summa)</td>
+                <td style="font:bold 16px arial">@Html.DisplayFor(model => model.Summa)</td>
+            </tr>
+        </table>
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+<p>
+        <input type="submit" value="Удалить" /> |
+        @Html.ActionLink("Вернуться к списку договоров", "Index")
+    </p>
+}

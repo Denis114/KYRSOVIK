@@ -1,0 +1,36 @@
+﻿@model MY_PROEKT.Models.Usluga
+
+@{
+    ViewBag.Title = "Просмотр";
+}
+
+<h2>Просмотр услуг</h2>
+
+<fieldset>
+    <legend>Usluga</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id=Model.UslugaID }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

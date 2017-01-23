@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MY_PROEKT.Models.Dogovor>
+
+@{
+    ViewBag.Title = "Список договоров";
+}
+
+<h2 style="text-align:center; color:darkblue">Список договоров</h2>
+<p>
+<div style="border:2px solid; background: ActiveBorder; color: #0094ff; padding: 10px 10px;"></div>
+</p>
+
+<p style="font: bold 22px arial;">
+   
+@if (Roles.GetRolesForUser().Contains("Agent"))
+{ 
+    @Html.ActionLink("Добавить договор", "Create")
+}
+   </p>
+<table style="text-align:center">
+    <tr style="background: ActiveBorder; height: 50px; font: bold 14px arial; width: 1200px">
+        <th>
+            @Html.DisplayNameFor(model => model.Nomer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user1.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usluga1.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Period)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summa)
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.AgentFio)
+        </th>
+        <th colspan="2"></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    
+          <tr>
+       @if ((Roles.GetRolesForUser().Contains("Client")) && (item.UserId == WebSecurity.CurrentUserId) || (!Roles.GetRolesForUser().Contains("Client")))
+         {
+        <td>
+            @Html.DisplayFor(modelItem => item.Nomer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user1.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usluga1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Period)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summa)
+        </td>
+    <td>
+            @Html.DisplayFor(modelItem => item.AgentFio)
+        </td>
+              }
+          @if     ((Roles.GetRolesForUser().Contains("Agent")) && (item.AgentFio == User.Identity.Name))
+              {
+          
+                <td>
+            <div style="border: 2px solid; background: ActiveBorder; color:#808080; padding: 5px 5px;">
+                  @Html.ActionLink("Изменить", "Edit", new { id = item.Id })
+            </div>
+        </td>
+    <td>
+            <div style="border: 2px solid; background: ActiveBorder; color:#808080; padding: 5px 5px;">
+                @*   @Html.ActionLink("Просмотр", "Details", new { id=item.Id })  | *@
+
+                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+               
+            </div>
+        </td>
+          }
+                </tr>
+}
+</table>

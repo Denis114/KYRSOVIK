@@ -1,0 +1,40 @@
+﻿@model MY_PROEKT.Models.Usluga
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление услуг</h2>
+
+<h3>Вы действительно хотите удалить эту услугу?</h3>
+<fieldset>
+    <legend>Usluga</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Удалить" /> |
+        @Html.ActionLink("Вернуться к списку услуг", "Index")
+    </p>
+}

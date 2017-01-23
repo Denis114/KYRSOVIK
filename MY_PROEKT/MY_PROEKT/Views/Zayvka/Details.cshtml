@@ -1,0 +1,42 @@
+﻿@model MY_PROEKT.Models.Zayvka
+
+@{
+    ViewBag.Title = "Список заявок";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Zayvka</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Datazayvka)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Datazayvka)
+    </div>
+
+    <div class="display-label">
+    @Html.DisplayNameFor(model => model.usluga.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.usluga.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.userp.UserName)
+    </div>
+    <div class="editor-field">
+       @Html.DisplayFor(model => model.userp.UserName)
+    </div>
+       </fieldset>
+<p>
+    @Html.ActionLink("Редактирование", "Edit", new { id=Model.ZayvkaID }) |
+    @Html.ActionLink("Назад", "Index")
+</p>
